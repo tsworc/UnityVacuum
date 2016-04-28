@@ -67,6 +67,7 @@ public class PrimitiveCollector : MonoBehaviour {
 			onCollection.Invoke();
 			InvokeAll(onSpecificCollection, target);
 		}
+        onDiscoveryOrCollection.Invoke();
 		//consume the primitive
 		target.SetActive (false);
 		collectionOffset = target.transform.position - transform.position;
