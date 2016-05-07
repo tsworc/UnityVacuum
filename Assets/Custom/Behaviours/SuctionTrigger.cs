@@ -47,10 +47,13 @@ public class SuctionTrigger : MonoBehaviour {
 
 	void OnTriggerExit(Collider other)
 	{
-		if (!HelperFunctions.CanReceiveForces (other))
-			return;
 		if (bodies.Contains (other.attachedRigidbody))
 			bodies.Remove (other.attachedRigidbody);
+	}
+
+	void OnDisable()
+	{
+		bodies.Clear ();
 	}
 
 	void ApplySuction(Rigidbody body)

@@ -12,7 +12,7 @@ public class ResetScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyUp (KeyCode.BackQuote)) {
+		if (Input.GetAxis("Reset") > 0) {
 			Reset();
 		}
 	}
