@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class LevelChanger : MonoBehaviour {
 
@@ -10,19 +11,20 @@ public class LevelChanger : MonoBehaviour {
 
 	public int NextLevel
 	{
-		get{ return (Application.loadedLevel + 1) % Application.levelCount;}
+		get{ return (SceneManager.GetActiveScene().buildIndex + 1) % SceneManager.sceneCountInBuildSettings;}
 	}
 	public void GotoLevel(int index)
 	{
-		Application.LoadLevel (index);
+		SceneManager.LoadScene(index);
 	}
 	public void GotoLevel(string name)
 	{
-		Application.LoadLevel (name);
+		SceneManager.LoadScene(name);
 	}
 	public void GotoNextLevel()
 	{
-		Debug.Log ("LevelChanger: Loading Next Level { " + NextLevel + " }");
-		Application.LoadLevel (NextLevel);
+		int next = NextLevel;
+		Debug.Log ("LevelChanger: Loading Next Level { " + next + " }");
+		SceneManager.LoadScene(next);
 	}
 }
